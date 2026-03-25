@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Svatba Míša a Vráťa | 4.-6. 9. 2026</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* === CSS PROMĚNNÉ === */
+        :root {
+            --forest-green: #3B4F3F; 
+            --sage-green: #7D8E78; 
+            --kraft-brown: #BFA588; 
+            --kraft-light: #e6dacd;
+            --paper-bg: #F9F8F4; 
+            --text-dark: #2B2B2B;
+            --text-light: #F9F8F4;
+            
+            --font-main: 'Montserrat', sans-serif;
+            --font-heading: 'Cormorant Garamond', serif; 
+            --font-script: 'Dancing Script', cursive; 
+        }
+
+        /* === RESET A ZÁKLAD === */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-main);
+            color: var(--text-dark);
+            background-color: var(--paper-bg);
+            line-height: 1.6;
+            font-size: 16px;
+            position: relative;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-heading);
+            color: var(--forest-green);
+        }
+
+        p { margin-bottom: 1rem; }
+        a { color: var(--sage-green); transition: color 0.3s; }
+        a:hover { color: var(--forest-green); }
+
+        /* === LAYOUT === */
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 50px 0; 
+            border-bottom: 2px dashed var(--kraft-brown); 
+        }
+        .section:last-child { border-bottom: none; }
+        .text-center { text-align: center; }
+
+        /* === LESNÍ HLAVIČKA === */
+        .forest-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 550px;
+            background: linear-gradient(to bottom, transparent, var(--paper-bg)), 
+                        url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?q=80&w=2000&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+            z-index: -1; 
+        }
+
+        /* === TLAČÍTKA === */
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--forest-green);
+            color: var(--text-light);
+            padding: 14px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-family: var(--font-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--forest-green);
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn:hover {
+            background-color: var(--paper-bg);
+            color: var(--forest-green);
+        }
+        .btn-outline {
+            background-color: transparent;
+            color: var(--forest-green);
+            border-color: var(--forest-green);
+        }
+        .btn-outline:hover {
+            background-color: var(--sage-green);
+            color: var(--text-light);
+            border-color: var(--sage-green);
+        }
+
+        /* === 1. HERO SEKCE === */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px 60px; 
+            background: transparent; 
+            border-bottom: none;
+        }
+
+        .hero .date {
+            font-family: var(--font-main);
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+            color: var(--text-dark); 
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        /* --- INTERAKTIVNÍ NADPIS (Zámišovi) --- */
+        .name-reveal-container {
+            display: grid;
+            place-items: center;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        
+        .name-before, .name-after {
+            grid-area: 1 / 1;
+            font-family: var(--font-script);
+            font-size: 5.5rem;
+            line-height: 1;
+            color: var(--forest-green);
+            font-weight: normal;
+            margin: 0;
+            text-align: center;
+            transition: transform 0.1s ease-out, opacity 0.1s ease-out, filter 0.1s ease-out;
+        }
+        
+        .name-after {
+            opacity: 0;
+            transform: scale(0.9) translateY(10px);
+            filter: blur(4px);
+        }
+
+        /* Krásný klasický Ampersand (&) */
+        .amp {
+            font-family: var(--font-heading);
+            font-weight: 400;
+            color: var(--sage-green);
+            font-size: 0.85em;
+            margin: 0 0px;
+        }
+
+        /* --- POSUVNÍK --- */
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 260px;
+            margin-bottom: 30px;
+        }
+        
+        .slider-container label {
+            font-family: var(--font-main);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--sage-green);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .slider-container input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            background: transparent;
+            margin: 0;
+        }
+
+        .slider-container input[type=range]:focus {
+            outline: none;
+        }
+
+        /* Webkit (Chrome, Safari, Edge) */
+        .slider-container input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: rgba(125, 142, 120, 0.3);
+            border-radius: 3px;
+        }
+        
+        .slider-container input[type=range]::-webkit-slider-thumb {
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background: var(--paper-bg);
+            border: 3px solid var(--forest-green);
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -11px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.1s;
+        }
+        
+        .slider-container input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+            background: #fff;
+        }
+
+        /* Firefox */
+        .slider-container input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: rgba(125, 142, 120, 0.3);
+            border-radius: 3px;
+        }
+        
+        .slider-container input[type=range]::-moz-range-thumb {
+            height: 28px;
+            width: 28px;
+            border-radius: 50%;
+            background: var(--paper-bg);
+            border: 3px solid var(--forest-green);
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: transform 0.1s;
+        }
+        
+        .slider-container input[type=range]::-moz-range-thumb:hover {
+            transform: scale(1.15);
+            background: #fff;
+        }
+
+        .hero .location {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* === 2. KONCEPT & BOX === */
+        .concept-box {
+            background-color: #fff;
+            padding: 50px 40px;
+            border-radius: 8px;
+            border: 1px solid var(--kraft-light);
+            border-top: 4px solid var(--forest-green); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .concept-content h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .concept-content .subtitle {
+            font-family: var(--font-heading);
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--sage-green);
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        .illustration-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: 280px;
+            margin: 30px auto 0;
+            border: 2px dashed var(--sage-green);
+            background-color: var(--paper-bg);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--sage-green);
+            font-style: italic;
+        }
+
+        /* === 3. HARMONOGRAM === */
+        .timeline {
+            position: relative;
+            max-width: 650px;
+            margin: 50px auto 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 1px;
+            background-color: var(--kraft-brown);
+            top: 0; bottom: 0; left: 20px;
+        }
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 50px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 11px; height: 11px;
+            background-color: var(--forest-green);
+            border-radius: 50%;
+            left: 15px; top: 8px;
+        }
+        .timeline-item.muted { opacity: 0.7; }
+        .timeline-item.muted::before { background-color: var(--kraft-brown); }
+        .timeline-item.muted .timeline-event {
+            border-left: 2px solid var(--kraft-light);
+            background-color: transparent;
+            box-shadow: none;
+            padding: 5px 15px;
+        }
+        .timeline-date {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--kraft-brown);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .timeline-event {
+            background: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-bottom: 15px;
+            border-left: 3px solid var(--sage-green);
+        }
+        .timeline-event.highlight {
+            border-left: 4px solid var(--forest-green);
+            background-color: var(--paper-bg);
+            border: 1px solid var(--kraft-light);
+            border-left: 4px solid var(--forest-green);
+        }
+        .timeline-event h4 {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+            font-family: var(--font-main);
+            font-weight: 600;
+        }
+
+        /* === VÝLETY === */
+        .trips-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .trip-card {
+            background-color: var(--paper-bg);
+            border: 1px solid var(--kraft-light);
+            padding: 15px;
+            border-radius: 4px;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            padding-right: 40px;
+        }
+        .trip-card::after {
+            content: '→';
+            position: absolute;
+            right: 15px; top: 50%;
+            transform: translateY(-50%);
+            color: var(--sage-green);
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+        .trip-card:hover {
+            border-color: var(--sage-green);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .trip-card:hover::after {
+            transform: translate(5px, -50%);
+            color: var(--forest-green);
+        }
+        .trip-card h5 { font-size: 1.05rem; margin-bottom: 3px; font-family: var(--font-main); font-weight: 600;}
+        .trip-card p { font-size: 0.85rem; margin-bottom: 0; color: #555; }
+
+        /* === MODAL === */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(43, 43, 43, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active { display: flex; opacity: 1; }
+        .modal-content {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 4px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content { transform: translateY(0); }
+        .modal-close {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--sage-green);
+            background: none;
+            border: none;
+        }
+        .modal-close:hover { color: var(--forest-green); }
+
+        /* === 4. UBYTOVÁNÍ === */
+        .acc-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .acc-card {
+            background-color: #fff;
+            padding: 35px 30px;
+            border-radius: 4px;
+            text-align: center;
+            border: 1px solid var(--kraft-light);
+            border-top: 4px solid var(--forest-green);
+        }
+        .acc-card.tent {
+            border-top-color: var(--kraft-brown);
+            background-color: var(--paper-bg);
+        }
+        .acc-card h3 { margin-bottom: 15px; font-size: 1.5rem; }
+
+        /* === 5. SURVIVAL KIT === */
+        .survival-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .check-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 4px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            border: 1px solid var(--kraft-light);
+        }
+        .check-icon {
+            color: var(--sage-green);
+            font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .check-item h5 {
+            font-family: var(--font-main);
+            font-size: 1rem;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+        .check-item p { font-size: 0.9rem; margin-bottom: 0; color: #555; }
+
+        /* === 6. FAQ === */
+        .faq-wrapper {
+            max-width: 700px;
+            margin: 40px auto 0;
+        }
+        details.faq-item {
+            background-color: #fff;
+            margin-bottom: 15px;
+            border: 1px solid var(--kraft-light);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        details.faq-item summary {
+            padding: 20px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--forest-green);
+            cursor: pointer;
+            list-style: none; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        details.faq-item summary::-webkit-details-marker { display: none; }
+        details.faq-item summary::after {
+            content: '+';
+            color: var(--sage-green);
+            font-size: 1.5rem;
+            font-weight: normal;
+            transition: transform 0.3s;
+        }
+        details[open].faq-item summary::after {
+            content: '−';
+            transform: rotate(180deg);
+        }
+        details.faq-item p {
+            padding: 0 20px 20px;
+            margin: 0;
+            color: var(--text-dark);
+            border-top: 1px solid var(--paper-bg);
+            padding-top: 15px;
+        }
+
+        /* === 7. RSVP === */
+        .rsvp-form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 4px;
+            border: 1px solid var(--kraft-light);
+            margin-top: 40px;
+        }
+        .iframe-placeholder {
+            width: 100%;
+            height: 700px;
+            background-color: var(--paper-bg);
+            border: 1px dashed var(--kraft-brown);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--sage-green);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .form-actions {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--paper-bg);
+        }
+
+        /* === FOOTER & FOTKA === */
+        footer {
+            background: linear-gradient(
+                to bottom, 
+                var(--paper-bg) 0%, 
+                rgba(249, 248, 244, 0.9) 30%, 
+                rgba(249, 248, 244, 0.7) 100% 
+            ), 
+            url('https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center bottom;
+            text-align: center;
+            padding: 60px 20px 80px; 
+        }
+
+        .photo-album-frame {
+            display: inline-block;
+            background: #fff;
+            padding: 15px 15px 20px 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transform: rotate(-2deg); 
+            margin-bottom: 40px;
+            border: 1px solid rgba(0,0,0,0.05);
+            max-width: 90%;
+        }
+
+        .footer-greeting {
+            font-family: var(--font-script);
+            font-size: 4.5rem;
+            color: var(--forest-green);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .forest-footer-img {
+            display: block;
+            width: 100%;
+            max-width: 350px; 
+            height: auto;
+        }
+
+        footer h2.footer-names {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: var(--forest-green); 
+        }
+        
+        footer p {
+            color: var(--sage-green); 
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--sage-green);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 99;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        #backToTop:hover {
+            background-color: var(--forest-green);
+            transform: translateY(-3px);
+        }
+
+        /* === MEDIA QUERIES (Tablet & Desktop) === */
+        @media (min-width: 768px) {
+            h1 { font-size: 5rem; }
+            .name-before, .name-after { font-size: 7.5rem; }
+            .section { padding: 60px 0; } 
+            
+            .trips-grid { grid-template-columns: 1fr 1fr; }
+            .acc-grid { grid-template-columns: 1fr 1fr; }
+            .checklist-grid { grid-template-columns: 1fr 1fr; }
+            
+            .timeline { margin-left: auto; margin-right: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Lesní banner úplně nahoře -->
+    <div class="forest-header"></div>
+
+    <!-- 1. HERO SEKCE -->
+    <header class="hero" id="top">
+        <p class="date">4. &mdash; 6. září 2026</p>
+        
+        <!-- Interaktivní odhalení jmen -->
+        <div class="name-reveal-container">
+            <h1 class="name-before">Míša <span class="amp">&amp;</span> Vráťa</h1>
+            <h1 class="name-after">Zámišovi</h1>
+        </div>
+
+        <div class="slider-container">
+            <label id="slider-label" for="altar-slider">DIY obřad 💍</label>
+            <input type="range" id="altar-slider" min="0" max="100" value="0">
+        </div>
+
+        <p class="location">Turistická ubytovna Podmokly, Sušice</p>
+        <a href="#rsvp" class="btn">Potvrdit účast</a>
+    </header>
+
+    <!-- 2. KONCEPT / O SVATBĚ -->
+    <section class="section" id="koncept" style="padding-top: 40px;">
+        <div class="container text-center">
+            
+            <div class="concept-content concept-box">
+                <h2>Jaké to bude?</h2>
+                <span class="subtitle">Neformální, komunitní...</span>
+                <p> Vymýšleli jsme svatbu, která odráží co nás baví, co máme rádi a jak chceme trávit čas s našimi blízkými. A tak je ze svatby nakonec oslava, bez formalit a bez stresu.
+  </p>
+                <p> Budeme rádi, když přijedete, a strávíte s námi čas v přírodě, s dobrým jídlem, pitím a pohodou. Kdo bude chtít, může nám pomoct s přípravami, vydat se na výlet do okolí, nebo si jen tak užít čas s ostatními.
+                    
+                    </p>
+                <p>Víc než svatba to tak je víkend s lidmi, které máme rádi a takových víkendů není nikdy dost...
+                      </p>
+
+                <div class="illustration-placeholder">
+                    <img src="Gemini_Generated_Image_ik11tqik11tqik11.png" alt="Ilustrace svatby" style="width:100%; height:100%; object-fit:cover; border-radius:4px;">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. HARMONOGRAM -->
+    <section class="section" id="harmonogram">
+        <div class="container">
+            <h2 class="text-center" style="font-size: 2.5rem; margin-bottom: 10px;">Co nás čeká</h2>
+            <p class="text-center" style="color: var(--sage-green); margin-bottom: 40px;">Neboli harmonogram, ale s menší nadějí na dodržení časů.</p>
+            
+            <div class="timeline">
+                
+                <!-- Pátek -->
+                <div class="timeline-item muted">
+                    <div class="timeline-date">Pátek 4. 9.</div>
+                    <div class="timeline-event">
+                        <h4>Od 16:00 | Příjezd, oheň a přípravy</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 0;">Pátek je pro ty, kteří nám přijedou pomoct připravit to nejnutnější na sobotu. No a nebo i pro ty, co si prostě jen chtějí v klidu sednout u ohně, něco si opéct a ozkoušet před sobotou teplotu piva.</p>
+                    </div>
+                </div>
+
+                <!-- Sobota -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Sobota 5. 9.</div>
+                    
+                    <div class="timeline-event">
+                        <h4>09:00 - 13:00 | Čas na výlet</h4>
+                        <p>Zatímco budeme vyndavat stoly a narážet pivo, budeme rádi, když vyrazíte do okolí! Tady jsou 4 nápady, jak strávit dopoledne:</p>
+                        
+                        <div class="trips-grid">
+<div class="trip-card" onclick="openModal('modal-pesi')">
+                                <h5>🥾 Pivovýletníci</h5>
+                                <p>Pěší trasa 10 km.</p>
+                            </div>
+                            <div class="trip-card" onclick="openModal('modal-cyklo')">
+                                <h5>🚲 Cyklopeklo</h5>
+                                <p>Cca 40km po Šumavě.</p>
+                            </div>
+                            <div class="trip-card" onclick="openModal('modal-kocar')">
+                                <h5>👨‍👩‍👧‍👦 Kočárkové komando</h5>
+                                <p>Krátký okruh s dětmi.</p>
+                            </div>
+
+                            <div class="trip-card" onclick="openModal('modal-kava')">
+                                <h5>☕ Kavárenští povaleči</h5>
+                                <p>Brunch a pohoda v Sušici.</p>
+                            </div>
+                        </div>
+<p class="text-center" style="margin-top: 10px; font-size: 0.85rem; color: var(--sage-green);">Zaparkovat můžete na místě - od pátečního večera - samozřejmě kdykoliv.</p>
+                    </div>
+                    
+                    <div class="timeline-event">
+                        <h4>13:30 | Návrat do tábora</h4>
+                        <p>Čas se převléknout do svátečního (outdoor) a dát si drink před obřadem.</p>
+                    </div>
+
+                    <div class="timeline-event highlight">
+                        <h4 style="font-size: 1.3rem;">14:30 | To Hlavní (Obřad)</h4>
+                        <p>Řekneme si Ano někde mezi stromy.</p>
+                    </div>
+
+                    <div class="timeline-event">
+                        <h4>15:30 - Do rána | Grilování & Párty</h4>
+                        <p>Jídlo formou DIY bufetu, naražené sudy, kytary, tanec a volná zábava.</p>
+                    </div>
+                </div>
+
+                <!-- Neděle -->
+                <div class="timeline-item">
+                    <div class="timeline-date">Neděle 6. 9.</div>
+                    <div class="timeline-event">
+                        <h4>do 12:00 | Vyprošťovák a úklid</h4>
+                        <p>Snídaně ze zbytků, silné kafe, společný úklid ubytovny a hromadné loučení. Do oběda musíme vyklidit pole.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. UBYTOVÁNÍ -->
+    <section class="section" id="ubytovani" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="text-center" style="font-size: 2.5rem; margin-bottom: 15px;">Kde složíme hlavy</h2>
+            <p class="text-center" style="max-width: 600px; margin: 0 auto;">Spaní je v dostatečném množství zajištěno na Tuistické ubytovně. Sociálky jsou společné na patře, ale hlavní zpráva je, že <strong>se všichni krásně vejdeme pod jednu střechu!</strong></p>
+
+            <div class="acc-grid">
+                <div class="acc-card">
+                    <h3>Palandy uvnitř</h3>
+                    <p style="margin-bottom: 15px;">V ubytovně je dostatek místa a pro každého máme garantovanou postel. Počítejte ale s tím, že na pokoji <strong>nebudete spát sami</strong>, ale pěkně komunitně se spřízněnými dušemi.</p>
+                    <ul style="text-align: left; display: inline-block; font-size: 0.9rem; color: #555; list-style-type: none;">
+                        <li><strong>Přízemí:</strong> 1x čtyřlůžák, 2x šestilůžák</li>
+                        <li><strong>Patro:</strong> 2x dvoulůžák, 4x šestilůžák</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-size: 0.9rem;"><em>Rozdělení do pokojů doladíme před svatbou tak, aby byly rodiny a správné party pohromadě.</em></p>
+                </div>
+
+                <div class="acc-card tent">
+                    <h3>Alternativa pro vlky samotáře</h3>
+                    <p>Místo na posteli sice máte jisté, ale chápeme, že někdo se raději nemačká na společném pokoji a ocení své vlastní soukromí a naprostý klid.</p>
+                    <p>Kolem ubytovny je louka jako stvořená pro stany a dodávky. Pokud preferujete spaní venku ve svém vlastním, určitě si ho můžete přivézt!</p>
+                </div>
+            </div>
+
+            <p class="text-center" style="margin-top: 20px; font-size: 0.85rem; color: var(--sage-green);">* Samozřejmě je také naprosto v pořádku přijet jen na sobotu a večer odjet domů.</p>
+        </div>
+    </section>
+
+    <!-- 5. SURVIVAL KIT & DRESSCODE -->
+    <section class="section" id="survival">
+        <div class="container">
+            
+            <div class="survival-header">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Dresscode & Survival Kit</h2>
+                <h3 style="font-size: 1.5rem; margin-bottom: 10px;">„Undresscode“</h3>
+                <p>Zahoďte obleky a upnuté šaty. Náš dresscode je <strong>Sportovní elegance / Český outdoor</strong>. </p>
+                <p>Na obřad si vezměte to, v čem se cítíte hezky (lněnou košili, letní šaty, chinos kalhoty), ale nezapomeňte, že jsme v lese a hlavní je <strong>pohodlí</strong>. Jehly nechte doma, zapadly byste do hlíny. Večer u ohně oceníte spíš flanelku než sako.</p>
+            </div>
+            
+            <h3 class="text-center" style="font-size: 1.5rem; margin-bottom: 25px;">Co si určitě přibalit:</h3>
+            
+            <div class="checklist-grid">
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <div>
+                        <h5>Čelovku</h5>
+                        <p>Cesta od ohně na záchod bývá temná.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <div>
+                        <h5>Teplé oblečení</h5>
+                        <p>Večery a rána na Šumavě umí pořádně kousat, mikina se neztratí.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <div>
+                        <h5>Repelent</h5>
+                        <p>Komáři se neberou, ale žerou.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <div>
+                        <h5>Spacák</h5>
+                        <p>Do stanu nutnost, ale i na palandu se pro jistotu může hodit.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <div>
+                        <h5>Vyprošťovák</h5>
+                        <p>Něco na nedělní ráno, ať je ten úklid snesitelnější.</p>
+                    </div>
+                </div>
+                <div class="check-item">
+                    <div class="check-icon">✓</div>
+                    <div>
+                        <h5>Dobrou náladu</h5>
+                        <p>A chuť zapojit se do komunitního grilování a čepování.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6. FAQ -->
+    <section class="section" id="faq" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="text-center" style="font-size: 2.5rem; margin-bottom: 10px;">Pár všetečných otázek</h2>
+            <p class="text-center" style="color: var(--sage-green); margin-bottom: 30px;">Klikněte na otázku pro zobrazení odpovědi.</p>
+            
+            <div class="faq-wrapper">
+                <details class="faq-item">
+                    <summary>Můžeme vzít s sebou děti nebo psa?</summary>
+                    <p>Určitě! Svatba je "child-friendly" i "dog-friendly". Jen prosíme, abyste na své ratolesti i mazlíčky dohlédli (hlavně u ohně a v blízkosti grilovaného masa).</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Kde můžeme zaparkovat?</summary>
+                    <p>Místa je dost. Auta bude možné nechat přímo na přilehlé louce u ubytovny. Jen prosíme o ohleduplnost při parkování, abychom nezablokovali průjezd a nechali místo i pro stany.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Co byste si přáli jako svatební dar?</summary>
+                    <p>Naše domácnost už praská ve švech (a ešusy už máme). Největší radost nám uděláte, když přijedete. Pokud nám i tak chcete něco dát, potěší nás finanční příspěvek na svatební cestu, ať můžeme vyrazit na pořádný trek.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary>Budu tam mít signál?</summary>
+                    <p>Velmi pravděpodobně bídný, ne-li žádný. A upřímně? Považujeme to za obrovskou výhodu! Užijme si offline víkend.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. RSVP -->
+    <section class="section" id="rsvp" style="border-bottom: none;">
+        <div class="container">
+            <div class="text-center">
+                <h2 style="font-size: 2.5rem;">Dejte nám vědět, jestli dorazíte!</h2>
+                <p>Prosíme o vyplnění formuláře nejpozději do <strong>31. 5. 2026</strong>, abychom věděli, kolik nakoupit piva a buřtů.</p>
+            </div>
+
+            <div class="rsvp-form-container">
+                <div class="iframe-placeholder">
+                    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScaTNZQws8mjctV2iFtVylHSQfZz6sv0ofY4GRmFcFHCvlvlg/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Načítání…</iframe>
+                </div>
+                
+                <div class="form-actions">
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 10px;">Nefunguje to, nic se nad tímhle nezobrazuje?</p>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLScaTNZQws8mjctV2iFtVylHSQfZz6sv0ofY4GRmFcFHCvlvlg/viewform?usp=sharing&ouid=112925531620306988004" target="_blank" class="btn btn-outline">Otevřít formulář v novém okně</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER S FOTKOU -->
+    <footer>
+        <h2 class="footer-greeting">Budeme se těšit!</h2>
+        
+        <div class="photo-album-frame">
+            <img src="IMG_6992 3.JPEG" alt="Míša a Vráťa" class="forest-footer-img">
+        </div>
+        
+        <h2 class="footer-names">Míša & Vráťa</h2>
+        <p>4. - 6. září 2026</p>
+    </footer>
+
+    <!-- Tlačítko zpět nahoru -->
+    <button id="backToTop" onclick="scrollToTop()" title="Zpět nahoru">↑</button>
+
+    <!-- === MODALNÍ OKNA PRO VÝLETY === -->
+    
+    <!-- Cyklo -->
+    <div id="modal-cyklo" class="modal-overlay" onclick="closeModalOnOutsideClick(event, 'modal-cyklo')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-cyklo')">&times;</button>
+            <h3 style="margin-bottom: 15px;">🚲 Cyklo komando</h3>
+            <p><strong>Délka:</strong> Cca 40 km po šumavských cyklostezkách.</p>
+            <p>Ideální volba pro ty, co chtějí před svatebním obědem pořádně vyhládnout. Nezapomeňte si přibalit helmu!</p>
+            <a href="https://mapy.cz/s/placeholder" target="_blank" class="btn btn-outline" style="margin-top: 15px;">📍 Zobrazit trasu na Mapy.cz</a>
+        </div>
+    </div>
+
+    <!-- Kočárky -->
+    <div id="modal-kocar" class="modal-overlay" onclick="closeModalOnOutsideClick(event, 'modal-kocar')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-kocar')">&times;</button>
+            <h3 style="margin-bottom: 15px;">👨‍👩‍👧‍👦 Kočárkové komando</h3>
+            <p><strong>Délka:</strong> Podle nálady dětí.</p>
+            <p>Nenáročný okruh vhodný i pro ty nejmenší. Cestou potkáme zvířátka, hezké výhledy a hlavně žádné obrovské kopce.</p>
+            <a href="https://mapy.cz/s/placeholder" target="_blank" class="btn btn-outline" style="margin-top: 15px;">📍 Zobrazit trasu na Mapy.cz</a>
+        </div>
+    </div>
+
+    <!-- Pěší -->
+    <div id="modal-pesi" class="modal-overlay" onclick="closeModalOnOutsideClick(event, 'modal-pesi')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-pesi')">&times;</button>
+            <h3 style="margin-bottom: 15px;">🥾 Výletníci</h3>
+            <p><strong>Délka:</strong> Kolem 10 km pěšky.</p>
+            <p>Pořádná procházka na nejbližší vyhlídku. Doporučujeme pevnou obuv a láhev vody do batohu.</p>
+            <a href="https://mapy.cz/s/placeholder" target="_blank" class="btn btn-outline" style="margin-top: 15px;">📍 Zobrazit trasu na Mapy.cz</a>
+        </div>
+    </div>
+
+    <!-- Káva -->
+    <div id="modal-kava" class="modal-overlay" onclick="closeModalOnOutsideClick(event, 'modal-kava')">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal('modal-kava')">&times;</button>
+            <h3 style="margin-bottom: 15px;">☕ Kavárenští povaleči</h3>
+            <p><strong>Náročnost:</strong> Extrémně nízká.</p>
+            <p>Pohoda ve městě, dobrá káva, dortík a klid před večerní párty. Skvělá volba pro ty, co se chtějí hlavně šetřit na večer.</p>
+            <a href="https://mapy.cz/s/placeholder" target="_blank" class="btn btn-outline" style="margin-top: 15px;">📍 Zobrazit polohu na Mapy.cz</a>
+        </div>
+    </div>
+
+    <!-- JS SKRIPTY PRO FUNGOVÁNÍ MODÁLŮ, TLAČÍTKA A POSUVNÍKU -->
+    <script>
+        // Logika pro posuvník odhalení jména (Zámišovi)
+        const altarSlider = document.getElementById('altar-slider');
+        const nameBefore = document.querySelector('.name-before');
+        const nameAfter = document.querySelector('.name-after');
+        const sliderLabel = document.getElementById('slider-label');
+
+        if (altarSlider) {
+            altarSlider.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value);
+                
+                if (val <= 50) {
+                    // Míša & Vráťa mizí
+                    const progress = val / 50; 
+                    nameBefore.style.opacity = 1 - progress;
+                    nameBefore.style.transform = `scale(${1 + progress * 0.05})`;
+                    nameBefore.style.filter = `blur(${progress * 4}px)`;
+                    
+                    nameAfter.style.opacity = 0;
+                    
+                    sliderLabel.innerHTML = "Už se bereme... 💍";
+                    sliderLabel.style.color = "var(--sage-green)";
+                    sliderLabel.style.transform = "scale(1)";
+                } else {
+                    // Zámišovi se objevují
+                    nameBefore.style.opacity = 0;
+                    
+                    const progress = (val - 50) / 50; 
+                    nameAfter.style.opacity = progress;
+                    nameAfter.style.transform = `scale(${0.9 + progress * 0.1}) translateY(${10 - (progress * 10)}px)`;
+                    nameAfter.style.filter = `blur(${(1 - progress) * 4}px)`;
+                    
+                    if (val === 100) {
+                        sliderLabel.innerHTML = "A je hotovo 🎉";
+                        sliderLabel.style.color = "var(--forest-green)";
+                        sliderLabel.style.transform = "scale(1.1)";
+                    } else {
+                        sliderLabel.innerHTML = "Ještě kousek...";
+                        sliderLabel.style.color = "var(--sage-green)";
+                        sliderLabel.style.transform = "scale(1)";
+                    }
+                }
+            });
+        }
+
+        // Otevření okna
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        // Zavření okna křížkem
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        // Zavření okna kliknutím mimo něj
+        function closeModalOnOutsideClick(event, id) {
+            if (event.target.id === id) {
+                closeModal(id);
+            }
+        }
+
+        // Tlačítko Zpět nahoru
+        window.onscroll = function() {
+            const btn = document.getElementById("backToTop");
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
